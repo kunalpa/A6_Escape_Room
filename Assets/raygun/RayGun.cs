@@ -29,11 +29,9 @@ public class RayGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (OVRInput.GetDown(shootingButton)) {
             Shoot();
         }
-        
     }
 
     public void Shoot() {
@@ -47,7 +45,7 @@ public class RayGun : MonoBehaviour
         if (hasHit) {
             endpoint = hit.point;
             UnderwaterCreature monster = hit.transform.GetComponentInParent<UnderwaterCreature>();
-            CodePanel panel = hit.transform.GetComponentInParent<codePanel>();
+            CodePanel panel = hit.transform.GetComponentInParent<CodePanel>();
             
             if (monster) {
                 hit.collider.enabled = false;
