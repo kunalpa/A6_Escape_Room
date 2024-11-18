@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RayGun : MonoBehaviour
 {
@@ -57,7 +58,10 @@ public class RayGun : MonoBehaviour
                 }
             } else if (panel){
                 codePanel.HandleSquareHit(hit.transform.gameObject);
-            } 
+            }  else if(hit.collider.tag == "UpButton" || hit.collider.tag == "DownButton"){
+                    Button thisButton = hit.collider.GetComponent<Button>();
+                    thisButton.onClick.Invoke();
+                }
             else {
                 GameObject rayImpact = Instantiate(rayImpactPrefab, hit.point, Quaternion.LookRotation(-hit.normal));
                 Destroy(rayImpact, 1);

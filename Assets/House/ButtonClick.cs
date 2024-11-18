@@ -7,10 +7,9 @@ public class VRButtonClickHandler : MonoBehaviour
 {
     private Button thisButton;
     public TextMeshPro label;
-    public OVRInput.Button vrClickButton = OVRInput.Button.PrimaryIndexTrigger; // Default to the trigger button
-    public Camera vrCamera; // Reference to the VR camera for raycasting
-
-    void Start(){
+    // public OVRInput.Button vrClickButton = OVRInput.Button.PrimaryIndexTrigger; // Default to the trigger button
+    // public Camera vrCamera; // Reference to the VR camera for raycasting
+        void Start(){
         thisButton = GetComponent<Button>();
         thisButton.onClick.AddListener(() => updateText(1));
     }
@@ -39,24 +38,12 @@ public class VRButtonClickHandler : MonoBehaviour
 
 
     }
+    void Update(){
+    //     if(OVRInput.GetDown(vrClickButton)){
+    //         thisButton.onClick.Invoke();
+    //     }
 
-    void Update()
-    {
-        // Ray ray = new Ray(vrCamera.transform.position, vrCamera.transform.forward);
-        // RaycastHit hit;
-        // Debug.DrawLine (transform.position, hit, Color.cyan);
-
-        // // Check if the ray hits a collider
-        // if (Physics.Raycast(ray, out hit))
-        // {
-        //     // Check if the hit object has a Unity UI Button component
-        //     Button button = hit.collider.GetComponent<Button>();
-
-        //     if (button != null && OVRInput.GetDown(vrClickButton))
-        //     {
-        //         button.onClick.Invoke();
-        //         Debug.Log($"Button {button.name} clicked!");
-        //     }
-        // }       
     }
+   
+    
 }
