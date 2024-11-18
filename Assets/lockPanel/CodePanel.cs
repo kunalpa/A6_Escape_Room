@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CodePanel : MonoBehaviour
 {
-    public GameObject[] codeSquares; // Array of the first four squares
-    public GameObject redSquare; // Red square for code submission
-    public GameObject keyPrefab; // Reference to key prefab
-    private int[] currentCode = new int[4]; // Tracks each square’s value
-    private int[] correctCode = {1, 2, 3, 4}; // Set your correct code here
+    public GameObject[] codeSquares;
+    public GameObject redSquare;
+    public GameObject keyPrefab;
+    private int[] currentCode = new int[4];
+    private int[] correctCode = {1, 2, 3, 4};
     public Player playerScript;
 
     void Start()
@@ -53,12 +53,10 @@ public class CodePanel : MonoBehaviour
         {
             if (currentCode[i] != correctCode[i])
             {
-                Debug.Log("Incorrect Code");
                 return;
             }
         }
-        Debug.Log("Correct Code! Key Instantiated.");
-        Vector3 keyPos = new Vector3(0, 0, 3); // Adjust position as needed
+        Vector3 keyPos = new Vector3(0, 0, 3);
         Instantiate(keyPrefab, keyPos, Quaternion.identity);
         playerScript.AddToBackpack("codeKey");
     }
