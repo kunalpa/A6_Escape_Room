@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEditor.PackageManager;
+using Oculus.Platform.Models;
 
 public class CodePanel : MonoBehaviour
 {
     public GameObject[] codeSquares;
-    public GameObject redSquare;
-    public GameObject keyPrefab;
+    public GameObject greenSquare;
     private int[] currentCode = new int[4];
     private int[] correctCode = {1, 2, 3, 4};
     public Player playerScript;
@@ -22,10 +25,10 @@ public class CodePanel : MonoBehaviour
     public void HandleSquareHit(GameObject square)
     {
         if (IsCodeSquare(square, out int index))
-        {
+        {        
             IncrementSquare(index);
         }
-        else if (square == redSquare)
+        else if (square == greenSquare)
         {
             CheckCode();
         }
@@ -40,9 +43,7 @@ public class CodePanel : MonoBehaviour
     private void IncrementSquare(int index)
     {
         currentCode[index] = (currentCode[index] + 1) % 10;
-        TextMesh textMesh = codeSquares[index].GetComponent<TextMesh>();
-        if (textMesh != null)
-        {
+        if (codeSquares[index].TryGetComponent<TextMeshPro>(out var textMesh)) {
             textMesh.text = currentCode[index].ToString();
         }
     }
@@ -56,8 +57,7 @@ public class CodePanel : MonoBehaviour
                 return;
             }
         }
-        Vector3 keyPos = new Vector3(0, 0, 3);
-        Instantiate(keyPrefab, keyPos, Quaternion.identity);
-        playerScript.AddToBackpack("codeKey");
+
+        StartCoroutine(playerScript.generateKey("CodeKey"));
     }
 }

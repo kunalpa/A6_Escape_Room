@@ -13,10 +13,10 @@ public class RayGun : MonoBehaviour
     public AudioClip shootingAudioClip;
     public GameObject rayImpactPrefab;
     public LayerMask layerMask;
-    private int totalMonsters = 5;
     public GameObject key;
     public Player playerScript;
     public CodePanel codePanel;
+    private int totalMonstersRemaining = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -50,13 +50,9 @@ public class RayGun : MonoBehaviour
             if (monster) {
                 hit.collider.enabled = false;
                 monster.Kill();
-                totalMonsters -= 1;
-                if (totalMonsters == 0) {
-                    Vector3 keyPos = Vector3.zero;
-                    keyPos.z = 3;
-                    Instantiate(key, keyPos, transform.rotation);
-
-                    playerScript.AddToBackpack("monsterKey");
+                totalMonstersRemaining -= 1;
+                if (totalMonstersRemaining == 0) {
+                    StartCoroutine(playerScript.generateKey("monsterKey"));
                 }
             } else if (panel){
                 codePanel.HandleSquareHit(hit.transform.gameObject);

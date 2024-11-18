@@ -5,6 +5,8 @@ using UnityEngine;
 public class UnderwaterCreature : MonoBehaviour
 {
     public Animator animator;
+    public MonsterSpawner spawnerScript;
+
     // Start is called before the first frame update
     void Start()
     {

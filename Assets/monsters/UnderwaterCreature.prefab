@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a44929ec230a049b289fdf922e9046, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.088
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5a44929ec230a049b289fdf922e9046, type: 3}
       propertyPath: m_LocalPosition.z
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7321734151853395724}
+  spawnerScript: {fileID: 0}
 --- !u!1 &7644483699840318947 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 574476501969901379, guid: b5a44929ec230a049b289fdf922e9046, type: 3}

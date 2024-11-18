@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7447047870235231161}
-  - component: {fileID: 9066024781865013190}
+  - component: {fileID: 8730247664129554731}
   m_Layer: 0
   m_Name: MonsterSpawner
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9066024781865013190
+--- !u!114 &8730247664129554731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,18 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4722548276676226137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d14e43228043c04db9e374568cb89a9, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbc52c6c0cd363419676babfa4500f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnOnStart: 1
-  SpawnObject: {fileID: 7002873018981177329, guid: 2829819c4148a5a4db4bbc1765541df6, type: 3}
-  SpawnAmount: 5
-  MaxIterations: 1000
-  SpawnLocations: 0
-  Labels: -1
-  CheckOverlaps: 1
-  OverrideBounds: -1
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  SurfaceClearanceDistance: 0.1
+  monster: {fileID: 7002873018981177329, guid: 2829819c4148a5a4db4bbc1765541df6, type: 3}
+  totalMonstersRemaining: 5
+  playerScript: {fileID: 0}
