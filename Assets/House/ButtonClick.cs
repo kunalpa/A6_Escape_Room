@@ -18,7 +18,6 @@ public class VRButtonClickHandler : MonoBehaviour
         Debug.Log("Changing" + thisButton.tag);
         if(thisButton.tag == "UpButton"){
             int newInt = int.Parse(label.text) + amount;
-            Debug.Log(newInt);
             if (newInt>=21){
                 label.text = 0.ToString();
             }else{

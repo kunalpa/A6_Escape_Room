@@ -64,7 +64,7 @@ public class MultiTextNumberController : MonoBehaviour
         resultDisplay.text = goalNum.ToString();
         // ForceUpdateText();
         result = goalNum;
-        UpdateFixed();
+        Update();
     }
 
     
@@ -125,8 +125,8 @@ public class MultiTextNumberController : MonoBehaviour
             input2.gameObject.SetActive(true);
 }
 
-    void UpdateFixed()
-    {
+    void Update()
+    {   Debug.Log(int.Parse(input1.text) * int.Parse(input2.text));
         if (int.Parse(input1.text) * int.Parse(input2.text) == result)
         {
             TriggerDoorEvent();
@@ -135,6 +135,8 @@ public class MultiTextNumberController : MonoBehaviour
         {
             Debug.Log("Door Open");
             door.localPosition = Vector3.Lerp(door.localPosition, isOpen ? openPosition : closedPosition, Time.deltaTime * openSpeed);
+            DoorOpen doorScript = door.GetComponent<DoorOpen>();
+            doorScript.Open();
         }    
     }
     public void TriggerDoorEvent()
