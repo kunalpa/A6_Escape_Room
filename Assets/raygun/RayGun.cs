@@ -44,6 +44,7 @@ public class RayGun : MonoBehaviour
         Vector3 endpoint = Vector3.zero;
 
         if (hasHit) {
+            Debug.Log("Hit Button");
             endpoint = hit.point;
             UnderwaterCreature monster = hit.transform.GetComponentInParent<UnderwaterCreature>();
             CodePanel panel = hit.transform.GetComponentInParent<CodePanel>();
@@ -58,7 +59,7 @@ public class RayGun : MonoBehaviour
                 }
             } else if (panel){
                 codePanel.HandleSquareHit(hit.transform.gameObject);
-            }  else if(hit.collider.tag == "UpButton" || hit.collider.tag == "DownButton"){
+            } else if(hit.collider.tag == "UpButton" || hit.collider.tag == "DownButton"){
                     Button thisButton = hit.collider.GetComponent<Button>();
                     thisButton.onClick.Invoke();
                 }
