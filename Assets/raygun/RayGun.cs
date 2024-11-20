@@ -18,6 +18,7 @@ public class RayGun : MonoBehaviour
     public Player playerScript;
     public CodePanel codePanel;
     private int totalMonstersRemaining = 5;
+    public MonsterSpawner monsterSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,7 @@ public class RayGun : MonoBehaviour
                 totalMonstersRemaining -= 1;
                 if (totalMonstersRemaining == 0) {
                     Debug.Log("Deploying monster key");
+                    monsterSpawner.KillMonsters();
                     //StartCoroutine(playerScript.generateKey("monsterKey"));
                 }
             } else if (panel){

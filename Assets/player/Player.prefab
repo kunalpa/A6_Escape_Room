@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8321513233452932834
+--- !u!1 &1356126531767069669
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2553180644750638064}
-  - component: {fileID: 5563381085248410964}
+  - component: {fileID: 3186184515707920524}
+  - component: {fileID: 737896956784341438}
   m_Layer: 0
-  m_Name: MonsterSpawner
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2553180644750638064
+--- !u!4 &3186184515707920524
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8321513233452932834}
+  m_GameObject: {fileID: 1356126531767069669}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 1, z: -1}
+  m_LocalRotation: {x: -0.02809712, y: 0.6169771, z: -0.0295788, w: -0.78592294}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5563381085248410964
+--- !u!114 &737896956784341438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8321513233452932834}
+  m_GameObject: {fileID: 1356126531767069669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dd26668ee116d541bc984dd44c6b944, type: 3}
+  m_Script: {fileID: 11500000, guid: 99dc2b49dfcb5ca43926bd8a2f865eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 7002873018981177329, guid: 2829819c4148a5a4db4bbc1765541df6, type: 3}
-  totalMonstersRemaining: 5
-  playerScript: {fileID: 0}
+  totalCollectableItemsCount: 4
+  keyPrefab: {fileID: 8416763194029722707, guid: 27ad747af92a7f84fa85dc04d5282158, type: 3}

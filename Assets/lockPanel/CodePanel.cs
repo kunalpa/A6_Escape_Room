@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CodePanel : MonoBehaviour
 {
-    public GameObject[] codeSquares; // Array of the first four squares
-    public GameObject redSquare; // Red square for code submission
-    public GameObject keyPrefab; // Reference to key prefab
-    private int[] currentCode = new int[4]; // Tracks each square’s value
-    private int[] correctCode = {1, 2, 3, 4}; // Set your correct code here
+    public GameObject[] codeSquares;
+    public GameObject redSquare; 
+    public GameObject keyPrefab; 
+    private int[] currentCode = new int[4];
+    private int[] correctCode = {1, 9, 5, 7};
     public Player playerScript;
+    public GameObject door;
 
     void Start()
     {
@@ -40,7 +42,7 @@ public class CodePanel : MonoBehaviour
     private void IncrementSquare(int index)
     {
         currentCode[index] = (currentCode[index] + 1) % 10;
-        TextMesh textMesh = codeSquares[index].GetComponent<TextMesh>();
+        TextMeshPro textMesh = codeSquares[index].GetComponent<TextMeshPro>();
         if (textMesh != null)
         {
             textMesh.text = currentCode[index].ToString();
@@ -55,11 +57,10 @@ public class CodePanel : MonoBehaviour
             {
                 Debug.Log("Incorrect Code");
                 return;
+            } else {
+                Destroy(door);
+                StartCoroutine(playerScript.generateKey("panelKey"));
             }
         }
-        Debug.Log("Correct Code! Key Instantiated.");
-        Vector3 keyPos = new Vector3(0, 0, 3); // Adjust position as needed
-        Instantiate(keyPrefab, keyPos, Quaternion.identity);
-        playerScript.AddToBackpack("codeKey");
     }
 }
