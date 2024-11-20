@@ -15,10 +15,9 @@ public class VRButtonClickHandler : MonoBehaviour
     }
 
     void updateText(int amount){
-        Debug.Log("Changing" + thisButton.tag);
         if(thisButton.tag == "UpButton"){
             int newInt = int.Parse(label.text) + amount;
-            if (newInt>=21){
+            if (newInt>=9){
                 label.text = 0.ToString();
             }else{
                 label.text = newInt.ToString();
@@ -27,9 +26,8 @@ public class VRButtonClickHandler : MonoBehaviour
         }
         else if(thisButton.tag == "DownButton"){
             int newInt = int.Parse(label.text) - amount;
-            Debug.Log(newInt);
             if (newInt<0){
-                label.text = 0.ToString();
+                label.text = 9.ToString();
             }else{
                 label.text = newInt.ToString();
             }
@@ -38,9 +36,7 @@ public class VRButtonClickHandler : MonoBehaviour
 
     }
     void Update(){
-    //     if(OVRInput.GetDown(vrClickButton)){
-    //         thisButton.onClick.Invoke();
-    //     }
+  
 
     }
    

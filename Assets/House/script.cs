@@ -6,23 +6,28 @@ using System;
 using Unity.VisualScripting;
 using System.Collections;
 using UnityEngine.ProBuilder.Shapes;
+using System.Data.Common;
 
 public class MultiTextNumberController : MonoBehaviour
 {
     public TextMeshPro resultDisplay;
     public TextMeshPro equalsDisplay;
     public TextMeshPro multDisplay;
+    public TextMeshPro addDisplay;
     public TextMeshPro input1;
     public TextMeshPro input2;
+    public TextMeshPro input3;
+
     public TextMeshPro welcomeText;
     public Button inc1;
     public Button inc2;
     public Button dec1;
     public Button dec2;
-    public Transform door; // The door's Transform
-    public Vector3 openPosition; // Target position or rotation when opened
-    public Vector3 closedPosition; // Default position or rotation when closed
-    public float openSpeed = 2.0f; // Speed of opening the door
+    public Button inc3;
+    public Button dec3;
+    public Transform door;
+
+    
     public bool isOpen = false; // Is the door currently open?
 
     private bool triggered = false; // Has the event occurred?
@@ -38,29 +43,37 @@ public class MultiTextNumberController : MonoBehaviour
     IEnumerator IntroText()
     {
         DeactivateTextObjects();
-        welcomeText.text = "Welcome to the First Puzzle".ToString();
+        welcomeText.text = "Wake Up UNC Student!".ToString();
         // input2.ForceMeshUpdate(true);
-        yield return new WaitForSecondsRealtime(5);
-        welcomeText.text = "Find the 2 factors of the number on the right".ToString();
+        yield return new WaitForSecondsRealtime(6);
+        welcomeText.text = "You have been teleported to this house for your final exam!".ToString();
         // input2.ForceMeshUpdate(true);
-        yield return new WaitForSecondsRealtime(5);
-        welcomeText.text = "Numbers range from 0-20. Good Luck!".ToString();
+        yield return new WaitForSecondsRealtime(4);
+        welcomeText.text = "To pass you must escape all 4 rooms of this house".ToString();
         // input2.ForceMeshUpdate(true);
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(4);
+        welcomeText.text = "Each room has a puzzle you must complete which will open the door to the next room".ToString();
+        yield return new WaitForSecondsRealtime(4);
+        welcomeText.text = "The first puzzle has some math so I hope you studied!".ToString();
+        yield return new WaitForSecondsRealtime(4);
+        welcomeText.text = "Good Luck and Have Fun!".ToString();
+        yield return new WaitForSecondsRealtime(3);
         welcomeText.text = "";
-         yield return new WaitForSecondsRealtime(2);
         StartPuzzle();
     }
     void StartPuzzle(){    
         welcomeText.gameObject.SetActive(false);
         ActivateTextObjects();
-        int num1 = UnityEngine.Random.Range(1,21);
-        int num2 = UnityEngine.Random.Range(1,21);
-        int goalNum =num1*num2;
+        int num1 = UnityEngine.Random.Range(9,0);
+        int num2 = UnityEngine.Random.Range(0,9);
+        int num3 = UnityEngine.Random.Range(0,9);
+        int goalNum =num1*num2+num3;
         input2.text = "0".ToString();
         input1.text = "0".ToString();
+        input3.text = "0".ToString();
         multDisplay.text = "X".ToString();
         equalsDisplay.text = "=".ToString();
+        addDisplay.text = "+".ToString();
         resultDisplay.text = goalNum.ToString();
         // ForceUpdateText();
         result = goalNum;
@@ -94,7 +107,13 @@ public class MultiTextNumberController : MonoBehaviour
         if (input1 != null)
             input1.gameObject.SetActive(false);
         if(input2 != null)
-            input2.gameObject.SetActive(true);
+            input2.gameObject.SetActive(false);
+        input3.gameObject.SetActive(false);
+        dec3.gameObject.SetActive(false);
+        inc3.gameObject.SetActive(false);
+        addDisplay.gameObject.SetActive(false);
+       
+
 }
     public void ActivateTextObjects()
 {
@@ -123,21 +142,28 @@ public class MultiTextNumberController : MonoBehaviour
             input1.gameObject.SetActive(true);
         if(input2 != null)
             input2.gameObject.SetActive(true);
+        input3.gameObject.SetActive(true);
+        dec3.gameObject.SetActive(true);
+        inc3.gameObject.SetActive(true);
+        addDisplay.gameObject.SetActive(true);
 }
 
     void Update()
-    {   Debug.Log(int.Parse(input1.text) * int.Parse(input2.text));
-        if (int.Parse(input1.text) * int.Parse(input2.text) == result)
-        {
-            TriggerDoorEvent();
+    {   
+        if(input1.text != null && input2.text != null && input3.text != null){
+            int inputtedNum = int.Parse(input1.text) * int.Parse(input2.text) + int.Parse(input3.text);
+            if (inputtedNum == result && result != 0)
+            {
+                TriggerDoorEvent();
+            }
+            if (triggered && isOpen == false)
+            {
+                Debug.Log("Door Open");
+                DoorOpen doorScript = door.GetComponent<DoorOpen>();
+                doorScript.Open();
+            }    
         }
-        if (triggered)
-        {
-            Debug.Log("Door Open");
-            door.localPosition = Vector3.Lerp(door.localPosition, isOpen ? openPosition : closedPosition, Time.deltaTime * openSpeed);
-            DoorOpen doorScript = door.GetComponent<DoorOpen>();
-            doorScript.Open();
-        }    
+        
     }
     public void TriggerDoorEvent()
     {
