@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using System.Collections;
 using UnityEngine.ProBuilder.Shapes;
 using System.Data.Common;
+using Meta.WitAi;
 
 public class MultiTextNumberController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class MultiTextNumberController : MonoBehaviour
     public TextMeshPro input1;
     public TextMeshPro input2;
     public TextMeshPro input3;
+    public AudioSource source;
+    public AudioClip openCLip;
 
     public TextMeshPro welcomeText;
     public Button inc1;
@@ -27,8 +30,9 @@ public class MultiTextNumberController : MonoBehaviour
     public Button dec3;
     public Transform door;
 
-    
-    public bool isOpen = false; // Is the door currently open?
+    public ParticleSystem ps;
+    public float openSpeed = 2.0f;
+    private bool isOpen = false; // Is the door currently open?
 
     private bool triggered = false; // Has the event occurred?
 
@@ -45,29 +49,29 @@ public class MultiTextNumberController : MonoBehaviour
         DeactivateTextObjects();
         welcomeText.text = "Wake Up UNC Student!".ToString();
         // input2.ForceMeshUpdate(true);
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSecondsRealtime(1);
         welcomeText.text = "Professor Szafir has given you a suprise assignment before summer Break".ToString();
         // input2.ForceMeshUpdate(true);
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(1);
         welcomeText.text = "All doors to this house are locked until you complete the puzzle inside each room".ToString();
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(1);
         welcomeText.text = "You've been assigned 4 rooms to complete to pass the class".ToString();
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(1);
         welcomeText.text = "The first puzzle has some math so I hope you studied!".ToString();
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(1);
         welcomeText.text = "Your summer break awaits ahead so you better hurry!".ToString();
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(1);
         welcomeText.text = "Good Luck and Have Fun!".ToString();
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(1);
         welcomeText.text = "";
         StartPuzzle();
     }
     void StartPuzzle(){    
         welcomeText.gameObject.SetActive(false);
         ActivateTextObjects();
-        int num1 = UnityEngine.Random.Range(9,0);
-        int num2 = UnityEngine.Random.Range(0,9);
-        int num3 = UnityEngine.Random.Range(0,9);
+        int num1 = UnityEngine.Random.Range(1,9);
+        int num2 = UnityEngine.Random.Range(1,9);
+        int num3 = UnityEngine.Random.Range(1,9);
         int goalNum =num1*num2+num3;
         input2.text = "0".ToString();
         input1.text = "0".ToString();
@@ -153,22 +157,35 @@ public class MultiTextNumberController : MonoBehaviour
     {   
         if(input1.text != null && input2.text != null && input3.text != null){
             int inputtedNum = int.Parse(input1.text) * int.Parse(input2.text) + int.Parse(input3.text);
-            if (inputtedNum == result && result != 0)
+            Debug.Log(isOpen + " "+ triggered + " " + inputtedNum + " " + result);
+            if (inputtedNum == result && result != 0 && isOpen == false)
             {
                 TriggerDoorEvent();
             }
-            if (triggered && isOpen == false)
-            {
-                Debug.Log("Door Open");
-                DoorOpen doorScript = door.GetComponent<DoorOpen>();
-                doorScript.Open();
-            }    
         }
         
+    }
+    public void Open(){
+        StartCoroutine(DoorParticle());
+    }
+    IEnumerator DoorParticle(){
+        Debug.Log("Open Door");
+        // AudioSource audio = Instantiate(audioOriginal);
+        Vector3 psPos = new Vector3(-2.0f,3.0f,36.0f);
+        Quaternion rotation = Quaternion.Euler(270,0,0);
+        Vector3 openPosition  = new Vector3(0, 0 ,0);
+        ParticleSystem doorParticle = Instantiate(ps,psPos,rotation);
+        door.localPosition = openPosition;
+        doorParticle.Play();
+        source.PlayOneShot(openCLip);
+        yield return new WaitForSecondsRealtime(7);
+        doorParticle.Stop();
+        doorParticle.Clear();
     }
     public void TriggerDoorEvent()
     {
         triggered = true;
-        isOpen = !isOpen; // Toggle the state
+        isOpen = !isOpen; 
+        Open();
     }
 }

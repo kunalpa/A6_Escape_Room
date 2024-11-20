@@ -7,7 +7,7 @@ using UnityEngine.ProBuilder.Shapes;
 public class DoorOpen : MonoBehaviour
 {
     public ParticleSystem ps;
-    public AudioSource audio;
+    public AudioSource audioOriginal;
     public Transform door; // The door's Transform
     public Vector3 openPosition; // Target position or rotation when opened
     public Vector3 closedPosition; // Default position or rotation when closed
@@ -22,14 +22,16 @@ public class DoorOpen : MonoBehaviour
         StartCoroutine(DoorParticle());
     }
     IEnumerator DoorParticle(){
-        AudioSource audio = GetComponent<AudioSource>();
+        Debug.Log("Open Door");
+        // AudioSource audio = Instantiate(audioOriginal);
+        Quaternion rotation = Quaternion.Euler(0,0,0);
+        ParticleSystem doorParticle = Instantiate(ps,door.localPosition,rotation);
         door.localPosition = Vector3.Lerp(door.localPosition,  openPosition, Time.deltaTime * openSpeed);
-        ParticleSystem doorParticle = Instantiate(ps);
-        doorParticle.GetComponent<ParticleSystem>();
         doorParticle.Play();
-        audio.Play();
-        yield return new WaitForSecondsRealtime(3);
-        Destroy(doorParticle);
+        audioOriginal.Play();
+        yield return new WaitForSecondsRealtime(7);
+        doorParticle.Stop();
+        doorParticle.Clear();
     }
 
     // Update is called once per frame
