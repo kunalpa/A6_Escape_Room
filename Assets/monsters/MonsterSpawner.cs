@@ -8,7 +8,7 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject monster;
     private int totalMonstersRemaining = 5;
     public Player playerScript;
-    public float spawnRadius = 2.0f;
+    public float spawnRadius = 4.0f;
     public GameObject door;
 
 
@@ -24,5 +24,6 @@ public class MonsterSpawner : MonoBehaviour
 
     public void KillMonsters() {
         Destroy(door);
+        StartCoroutine(playerScript.generateKey("monsterKey"));
     }
 }

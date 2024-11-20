@@ -20,15 +20,23 @@ Puzzle Hints/Guides
  
   <details> 
   <summary>Puzzle 3 Hints/Information </summary>
-  TBD
+  Shoot at the numbers on the panel on the wall and shoot the green button when you want to check your answer. The door should open if you inputted the correct code.
+  <details>
+  <summary>Puzzle 3 answer </summary>
+  1957
+  </details>
   </details>
 
 <details> 
   <summary>Puzzle 4 Hints/Information </summary>
-  TBD
+  Shoot all monsters in the bathroom to escape.
 </details>
 
 Assets and Tutorials used by each group member.
+
+Kunal:
+RayGun tutorial: https://www.youtube.com/watch?v=CcJ4yMTzXUM
+
 
 Zain: 
 Assets and Tutorials

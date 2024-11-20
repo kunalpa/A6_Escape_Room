@@ -17,11 +17,14 @@ public class Player : MonoBehaviour
     }
 
     public IEnumerator generateKey(string keyName) {
-        Vector3 keyPos = new Vector3(0, 0, 0.5f);
+        Debug.Log("Generating key");
+        Vector3 keyPos = new Vector3(2.0f, 0, 1.2f);
         keyPos = transform.TransformPoint(keyPos);
-        Instantiate(keyPrefab, keyPos, Quaternion.identity, transform);
+        GameObject key = Instantiate(keyPrefab, keyPos, Quaternion.identity, transform);
+        key.SetActive(true);
+        key.GetComponent<MeshRenderer>().enabled = true;
         AddToBackpack(keyName);
         yield return new WaitForSeconds(1);
-        DestroyImmediate(keyPrefab, true);
+        // DestroyImmediate(keyPrefab, true);
     }
 }

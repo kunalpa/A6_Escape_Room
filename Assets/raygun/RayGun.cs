@@ -57,7 +57,6 @@ public class RayGun : MonoBehaviour
                 if (totalMonstersRemaining == 0) {
                     Debug.Log("Deploying monster key");
                     monsterSpawner.KillMonsters();
-                    //StartCoroutine(playerScript.generateKey("monsterKey"));
                 }
             } else if (panel){
                 codePanel.HandleSquareHit(hit.transform.gameObject);
