@@ -47,11 +47,12 @@ public class RayGun : MonoBehaviour
         if (hasHit) {
             Debug.Log("Hit Button");
             endpoint = hit.point;
-            UnderwaterCreature monster = hit.transform.GetComponentInParent<UnderwaterCreature>();
+            // UnderwaterCreature monster = hit.transform.GetComponentInParent<UnderwaterCreature>();
             CodePanel panel = hit.transform.GetComponentInParent<CodePanel>();
             
-            if (monster) {
+            if (hit.collider.tag == "Monster") {
                 hit.collider.enabled = false;
+                UnderwaterCreature monster = hit.collider.GetComponent<UnderwaterCreature>();
                 monster.Kill();
                 totalMonstersRemaining -= 1;
                 if (totalMonstersRemaining == 0) {
