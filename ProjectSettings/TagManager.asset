@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UpButton
   - DownButton
+  - Monster
   layers:
   - Default
   - TransparentFX
