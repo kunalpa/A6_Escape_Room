@@ -1,7 +1,7 @@
 <details> 
 <summary>Documentation Video Link </summary>
-The Documentation video includes a voice over describing design process and what we were thinking when initially creating our game. A video with raw gameplay and no voice over is also included for looking at just the gameplay.\n
-Documentation Video:https://youtu.be/3B0PQikz6fs \n
+The Documentation video includes a voice over describing design process and what we were thinking when initially creating our game. A video with raw gameplay and no voice over is also included for looking at just the gameplay.
+Documentation Video:https://youtu.be/3B0PQikz6fs 
 Gameplay Video: https://youtu.be/bm9AmfeSCIQ
 
 </details>
