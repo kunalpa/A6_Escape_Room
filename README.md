@@ -1,3 +1,11 @@
+<details> 
+<summary>Documentation Video Link </summary>
+The Documentation video includes a voice over describing design process and what we were thinking when initially creating our game. A video with raw gameplay and no voice over is also included for looking at just the gameplay.\n
+Documentation Video:https://youtu.be/3B0PQikz6fs \n
+Gameplay Video: https://youtu.be/bm9AmfeSCIQ
+
+</details>
+
 Game Instructions:
 Welcome to our Escape Room. We implemented a teleportation based movement system so to move around you can teleport. All puzzles/objects can be interacted with through the laser gun in your right hand and once a puzzle is solved a door will open and the next puzzle will be unlocked. There are 4 puzzles in total and you can go outside once all have been solved.
 
@@ -15,7 +23,7 @@ Puzzle Hints/Guides
   
   <details> 
   <summary>Puzzle 2 Hints/Information </summary>
-  TBD
+  Shoot the laser gun to make the lasers change position and so you have a path that will allow you to teleport through the door way. Shooting will change the orientation of the lasers and use that to find a pathway through.
   </details>
  
   <details> 
