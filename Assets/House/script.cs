@@ -49,20 +49,20 @@ public class MultiTextNumberController : MonoBehaviour
         DeactivateTextObjects();
         welcomeText.text = "Wake Up UNC Student!".ToString();
         // input2.ForceMeshUpdate(true);
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(4);
         welcomeText.text = "Professor Szafir has given you a suprise assignment before summer Break".ToString();
         // input2.ForceMeshUpdate(true);
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(6);
         welcomeText.text = "All doors to this house are locked until you complete the puzzle inside each room".ToString();
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(6);
         welcomeText.text = "You've been assigned 4 rooms to complete to pass the class".ToString();
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(6);
         welcomeText.text = "The first puzzle has some math so I hope you studied!".ToString();
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(5);
         welcomeText.text = "Your summer break awaits ahead so you better hurry!".ToString();
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(5);
         welcomeText.text = "Good Luck and Have Fun!".ToString();
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(3);
         welcomeText.text = "";
         StartPuzzle();
     }
